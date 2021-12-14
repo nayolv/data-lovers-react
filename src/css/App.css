@@ -29,7 +29,30 @@
           justify-content: center;
 }
 
-.films-cards #card {
+.films-cards .card {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 20px;
+  width: 15rem;
+  padding: 5px;
+  border-color: rgba(72, 216, 241, 0.342);
+}
+
+.films-cards .card button {
+  width: 100px;
+  margin: 5px;
+}
+
+#nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#nav-bar button {
   margin: 10px;
 }
 

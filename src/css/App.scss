@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -14,9 +15,27 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  #card {
-    margin: 10px;
+  .card {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    width: 15rem;
+    padding: 5px;
+    border: {
+      color: rgba(72, 216, 241, 0.342);
+    };
+    button{
+      width: 100px;
+      margin: 5px;
+    }
   }
+}
+#nav-bar{
+display: flex;
+justify-content: center;
+button{
+  margin: 10px;
+}
 }
 .paginationBtns {
   display: flex;
@@ -48,3 +67,5 @@
     background-color: rgb(144, 144, 240);
   }
 }
+
+
