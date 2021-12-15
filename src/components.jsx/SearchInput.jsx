@@ -1,27 +1,26 @@
-import { Autocomplete, Stack, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import React from "react";
 
-const SearchInput = ({ dataFilms }) => {
+const SearchInput = ({ search, handleChange }) => {
   return (
-    <Stack spacing={2} sx={{ width: 300 }}>
-      <Autocomplete
-        freeSolo
-        id="free-solo-2-demo"
-        disableClearable
-        options={dataFilms.map((film) => film.title)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search input"
-            InputProps={{
-              ...params.InputProps,
-              type: "search",
-            }}
-          />
-        )}
-      />
-    </Stack>
+    <div className="input-search-container">
+        <TextField
+          id="search-input"
+          label="Busqueda por nombre"
+          variant="outlined"
+          value={search}
+          onChange={handleChange}
+        />
+    </div>
   );
 };
 
 export default SearchInput;
+/*
+<input 
+      className="form-control inputBuscar"
+      value={search}
+      placeholder="Busqueda por nombre"
+      onChange={handleChange}
+      />
+      */

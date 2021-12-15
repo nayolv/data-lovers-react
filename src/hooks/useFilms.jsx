@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 
 export const useFilms = () => {
   const [dataFilms, setDataFilms] = useState([]);
+  const [cardsFilms, setCardsFilms] = useState([]);
   const [errorFilms, setErrorFilms] = useState(null);
   useEffect(() => {
-     fetch("https://ghibliapi.herokuapp.com/films")
+    fetch("https://ghibliapi.herokuapp.com/films")
       .then((response) => response.json())
       .then((data) => {
         setDataFilms(data);
+        setCardsFilms(data);
       })
       .catch((err) => {
         console.error("Existe un error", err);
@@ -50,7 +52,7 @@ export const useFilms = () => {
     });
     setDataFilms(sort);
   };
- const sortAlphabeticDataDesc = () => {
+  const sortAlphabeticDataDesc = () => {
     const sort = [...dataFilms].sort(function (a, b) {
       if (a.title < b.title) {
         return 1;
@@ -71,7 +73,25 @@ export const useFilms = () => {
   const changePage = ({ selected }) => {
     setpageNumber(selected);
   };
+
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    filterSearch(e.target.value);
+  };
+
+  const filterSearch = (searchTerm) => {
+    const res = cardsFilms.filter((item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setDataFilms(res);
+  };
+
   return {
+    search,
+    cardsFilms,
+    handleChange,
     dataFilms,
     errorFilms,
     sortNumericDataAsc,

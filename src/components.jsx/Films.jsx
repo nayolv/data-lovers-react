@@ -8,7 +8,10 @@ import SearchInput from "./SearchInput";
 const Films = () => {
   const {
     errorFilms,
+    search,
+    handleChange,
     dataFilms,
+    cardsFilms,
     sortNumericDataAsc,
     sortNumericDataDesc,
     sortAlphabeticDataAsc,
@@ -20,8 +23,10 @@ const Films = () => {
   } = useFilms();
 
   return (
-    <>
+    <div className="films-container">
       <NavBar
+        handleChange={handleChange}
+        search={search}
         sortNumericDataAsc={sortNumericDataAsc}
         sortNumericDataDesc={sortNumericDataDesc}
         sortAlphabeticDataAsc={sortAlphabeticDataAsc}
@@ -31,6 +36,7 @@ const Films = () => {
       <div className="films-cards">
         <DisplayFilms
           dataFilms={dataFilms}
+          cardsFilms={cardsFilms}
           pagesVisited={pagesVisited}
           filmsPerPage={filmsPerPage}
         />
@@ -46,7 +52,7 @@ const Films = () => {
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
       />
-    </>
+    </div>
   );
 };
 

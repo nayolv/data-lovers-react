@@ -1,3 +1,6 @@
+import React, { useState } from "react";
+import ModalContainer from "./Modal";
+import { useShow } from "../hooks/useShow";
 import {
   Button,
   Card,
@@ -6,29 +9,59 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 const DisplayFilms = ({ dataFilms, pagesVisited, filmsPerPage }) => {
+  const { open, handleOpen, handleClose } = useShow();
   const displayFilms = dataFilms.slice(
     pagesVisited,
     pagesVisited + filmsPerPage
   );
 
+  const [infoFilm, setinfoFilm] = useState({
+    film: "",
+    description: ""
+  });
+
   return (
     <>
       {displayFilms.map((film) => (
-        <div className="card" key={film.id}>
-        <img className="card-img-top" src={film.image} alt="ghibli films" />
-        <div className="card-body">
-        <h5 className="card-title">{film.title}</h5>
-          <p className="card-text">Director: {film.director}</p>
-          <p className="card-text">Producer: {film.producer}</p>
-          <p className="card-text">Release: {film.release_date}</p>
-          <p className="card-text">Score: {film.rt_score}</p>
-        </div>
-        <button type="button" class="btn btn-link">More Info</button>
-      </div>
+        <Card className="card" key={film.id} sx={{ width: 300 }}>
+          <CardMedia
+            component="img"
+            alt="studio ghibli films"
+            height="200"
+            image={film.image}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {film.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Director: {film.director}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Release: {film.release_date}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Score: {film.rt_score}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="small"
+              onClick={() => {
+                handleOpen();
+                setinfoFilm({
+                  film: film.title,
+                  description: film.description
+                });
+              }}
+            >
+              Learn More
+            </Button>
+          </CardActions>
+        </Card>
       ))}
+      <ModalContainer open={open} handleClose={handleClose} content={infoFilm.description} film={infoFilm.film}/>
     </>
   );
 };
