@@ -3,7 +3,7 @@ import logo from "../images/logo.png";
 
 const Welcome = () => {
   return (
-    <div className="Welcome">
+      <div className="Welcome">
         <img
           className="zoom"
           src={logo}
@@ -12,7 +12,7 @@ const Welcome = () => {
             window.location.href = "./films";
           }}
         />
-    </div>
+      </div>
   );
 };
 
