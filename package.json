@@ -2,6 +2,7 @@
   "name": "studio-ghibli",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://nayolv.github.io/data-lovers-react",
   "dependencies": {
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -24,6 +25,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "depoloy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
