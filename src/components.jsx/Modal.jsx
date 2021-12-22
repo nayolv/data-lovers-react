@@ -25,5 +25,4 @@ const ModalContainer = ({ open, handleClose, content, film }) => {
 
   );
 };
-
 export default ModalContainer;
