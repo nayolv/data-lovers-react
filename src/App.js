@@ -1,7 +1,7 @@
 import "./css/App.css";
-import Welcome from "./components.jsx/Welcome";
+import Welcome from "./components/Welcome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Films from "./components.jsx/Films";
+import Films from "./components/Films";
 
 function App() {
   
