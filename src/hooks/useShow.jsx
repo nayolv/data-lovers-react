@@ -9,9 +9,13 @@ export const useShow = () => {
       const handleClose = () => {
         setOpen(false);
       };
+      const [click, setClick] = useState(false);
+      const changeClick = () => setClick(!click);
     return {
         open,
         handleOpen,
-        handleClose
+        handleClose,
+        changeClick,
+        click,
     }
 }

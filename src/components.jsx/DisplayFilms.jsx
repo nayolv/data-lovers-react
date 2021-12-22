@@ -1,26 +1,18 @@
-import React, { useState } from "react";
 import ModalContainer from "./Modal";
 import { useShow } from "../hooks/useShow";
 import {
   Button,
   Card,
-  CardActions,
-  CardContent,
   CardMedia,
-  Typography,
 } from "@mui/material";
-const DisplayFilms = ({ dataFilms, pagesVisited, filmsPerPage }) => {
-  const { open, handleOpen, handleClose } = useShow();
+const DisplayFilms = ({ dataFilms, pagesVisited, filmsPerPage, infoFilm, infoFilmData }) => {
+  const { open, handleClose, handleOpen } = useShow();
   const displayFilms = dataFilms.slice(
     pagesVisited,
     pagesVisited + filmsPerPage
   );
 
-  const [infoFilm, setinfoFilm] = useState({
-    film: "",
-    description: ""
-  });
-
+ 
   return (
     <>
       {displayFilms.map((film) => (
@@ -28,37 +20,33 @@ const DisplayFilms = ({ dataFilms, pagesVisited, filmsPerPage }) => {
           <CardMedia
             component="img"
             alt="studio ghibli films"
-            height="200"
             image={film.image}
           />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+          <section>
+            <h3>
               {film.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Director: {film.director}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Release: {film.release_date}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Score: {film.rt_score}
-            </Typography>
-          </CardContent>
-          <CardActions>
+            </h3>
+            <p>
+             <b>Director:</b> {film.director}
+            </p>
+            <p >
+              <b>Release:</b> {film.release_date}
+            </p>
+            <p>
+             <b>Score:</b> {film.rt_score}
+            </p>
+          </section>
+          <section>
             <Button
               size="small"
               onClick={() => {
                 handleOpen();
-                setinfoFilm({
-                  film: film.title,
-                  description: film.description
-                });
+                infoFilmData(film.title, film.description);
               }}
             >
               Learn More
             </Button>
-          </CardActions>
+          </section>
         </Card>
       ))}
       <ModalContainer open={open} handleClose={handleClose} content={infoFilm.description} film={infoFilm.film}/>
@@ -67,24 +55,3 @@ const DisplayFilms = ({ dataFilms, pagesVisited, filmsPerPage }) => {
 };
 
 export default DisplayFilms;
-/*
- <Card id="card" key={i} sx={{ width: 345 }}>
-                      <CardMedia
-                        component="img"
-                        alt="studio ghibli films"
-                        height="200"
-                        image={film.image}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {film.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                        
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">Learn More</Button>
-                      </CardActions>
-                    </Card>
-*/

@@ -88,9 +88,19 @@ export const useFilms = () => {
     setDataFilms(res);
   };
 
+  const [infoFilm, setInfoFilm] = useState({
+    film: "",
+    description: ""
+  });
+  const infoFilmData = (title, description) => {
+    setInfoFilm({
+      film: title,
+      description: description
+    })
+  }
+
   return {
     search,
-    cardsFilms,
     handleChange,
     dataFilms,
     errorFilms,
@@ -102,5 +112,7 @@ export const useFilms = () => {
     pageCount,
     changePage,
     filmsPerPage,
+    infoFilm, 
+    infoFilmData,
   };
 };

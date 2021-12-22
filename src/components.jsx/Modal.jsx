@@ -1,20 +1,8 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Modal } from "@mui/material";
 import React from "react";
-
+import { FaTimes } from "react-icons/fa";
 
 const ModalContainer = ({ open, handleClose, content, film }) => {
- /* const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-*/
   return (
     <Modal
   open={open}
@@ -22,14 +10,17 @@ const ModalContainer = ({ open, handleClose, content, film }) => {
   aria-labelledby="modal-modal-title"
   aria-describedby="modal-modal-description"
 >
-  <Box className="style-box">
-    <Typography id="modal-modal-title" variant="h6" component="h2">
+  <div className="style-box">
+    <section>
+      <FaTimes onClick={handleClose}/>
+    </section>
+    <h2>
       Synopsis of "{film}"
-    </Typography>
-    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+    </h2>
+    <p>
       {content}
-    </Typography>
-  </Box>
+    </p>
+  </div>
 </Modal>
 
   );

@@ -1,16 +1,19 @@
-import React from 'react'
-import logo from "../images/logo.png"
+import React from "react";
+import logo from "../images/logo.png";
 
 const Welcome = () => {
-    return (
-       <div className='Welcome'>
-           <section>
-           <img src={logo} alt="totoro-logo" onClick={()=>{
-               window.location.href ="./films"
-           }}/>
-           </section>
-       </div>
-    )
-}
+  return (
+    <div className="Welcome">
+        <img
+          className="zoom"
+          src={logo}
+          alt="totoro-logo"
+          onClick={() => {
+            window.location.href = "./films";
+          }}
+        />
+    </div>
+  );
+};
 
-export default Welcome
+export default Welcome;
