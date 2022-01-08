@@ -1,5 +1,5 @@
 import "./css/App.css";
-import Welcome from "./components/Welcome";
+//import Welcome from "./components/Welcome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Films from "./components/Films";
 
@@ -9,8 +9,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/films" element={<Films />} />
+          <Route exact path="/" element={<Films />} />
+          {/* <Route exact path="/films" element={<Films />} /> */}
         </Routes>
       </BrowserRouter>
     </>
